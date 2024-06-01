@@ -1,4 +1,5 @@
 import flet as ft
+
 class EquationSolver:
     """
     Класс для решения системы уравнений.

@@ -1,7 +1,8 @@
 import flet as ft
 import json
 from datetime import datetime
-from equation_solver import EquationSolver
+from r_engen.equation_solver import EquationSolver  # Используйте абсолютный путь
+from r_engen.file_loader import LoadFiles  # Используйте абсолютный путь
 
 
 class MainWindow:
@@ -722,37 +723,6 @@ class CreateHelpPage(MainWindow):
             controls=[ft.ListTile(title=ft.Text(controls, size=18))],
         ))
 
-
-class LoadFiles:
-    """
-    Класс для загрузки файлов.
-
-    Методы:
-    - load_translations: загружает переводы из файла JSON.
-    """
-    def __init__(self):
-        pass
-
-    def load_translations(self, file_path):
-        """
-        Загружает переводы из файла JSON.
-
-        Параметры:
-        - file_path: str, путь к файлу с переводами.
-
-        Возвращает:
-        - dict, словарь с переводами.
-        """
-        translations = {}
-        try:
-            with open(file_path, 'r', encoding='utf-8') as file:
-                translations = json.load(file)
-        except FileNotFoundError:
-            print(f"Файл с переводами не найден: {file_path}")
-        except json.JSONDecodeError:
-            print(f"Ошибка декодирования файла с переводами: {file_path}")
-
-        return translations
 
 
 class KeyboardBindings(MainWindow):
