@@ -51,6 +51,11 @@ class EquationSolver:
             A[i], A[max_row] = A[max_row], A[i]
             B[i], B[max_row] = B[max_row], B[i]
 
+            # Проверка на деление на ноль
+            if abs(A[i][i]) < epsilon:
+                self.show_error_alert(self.page.translations['messages']['zero_division'][self.current_language])
+                return None, None
+
             # Приведение матрицы к треугольному виду
             for j in range(i + 1, n):
                 coef = A[j][i] / A[i][i]
@@ -153,15 +158,18 @@ class EquationSolver:
         return x
 
     def show_error_alert(self, message):
-        alert_dialog = self.page.dialog
-        alert_dialog.title = ft.Text(self.page.translations['messages']['error'][self.current_language])
-        alert_dialog.content = ft.Text(message)
-        alert_dialog.actions = [ft.TextButton("OK", on_click=lambda e: self.close_dialog())]
-        alert_dialog.actions_alignment = ft.MainAxisAlignment.END
+        alert_dialog = ft.AlertDialog(
+            title=ft.Text(self.page.translations['messages']['error'][self.current_language]),
+            content=ft.Text(message),
+            actions=[ft.TextButton("OK", on_click=lambda e: self.close_dialog())],
+            actions_alignment=ft.MainAxisAlignment.END,
+        )
 
+        self.page.dialog = alert_dialog
         alert_dialog.open = True
         self.page.update()
 
     def close_dialog(self):
         self.page.dialog.open = False
         self.page.update()
+

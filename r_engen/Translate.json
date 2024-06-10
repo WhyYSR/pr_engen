@@ -93,6 +93,10 @@
     "invalid_input": {
       "en": "Please enter only numerical values.",
       "ru": "Пожалуйста, введите только числовые значения."
+    },
+    "zero_division": {
+      "en": "Division by zero detected during Gaussian elimination.",
+      "ru": "Обнаружено деление на ноль при выполнении метода Гаусса."
     }
   },
   "buttons": {

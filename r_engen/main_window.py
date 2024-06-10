@@ -800,10 +800,8 @@ class CustomButton(ft.TextButton):
                 animation_duration=500,
                 shape={
                     ft.MaterialState.HOVERED: ft.RoundedRectangleBorder(radius=20),
-                        ft.MaterialState.DEFAULT: ft.RoundedRectangleBorder(radius=4),
+                    ft.MaterialState.DEFAULT: ft.RoundedRectangleBorder(radius=4),
                 },
             ),
         )
         self.page = page
-
-
